@@ -34,3 +34,27 @@ def to_pickle(**kwargs):
 def from_pickle(key):
     with open('tbd00.pkl', 'rb') as fid:
         return pickle.load(fid)[key]
+
+
+def to_np(x):
+    # not a good idea to use isinstance()
+    # if use isinstance(), here have to import all of them (tf/torch/cupy)
+    tmp0 = str(type(x))[8:-2]
+    if tmp0.startswith('tensorflow'):
+        ret = x.numpy()
+    elif tmp0.startswith('torch'):
+        ret = x.detach().to('cpu').numpy()
+    elif tmp0.startswith('cupy'):
+        ret = x.get()
+    else:
+        ret = x
+    return ret
+
+def hfe(x, y, eps=1e-5):
+    x = to_np(x)
+    y = to_np(y)
+    ret = np.max(np.abs(x-y)/(np.abs(x)+np.abs(y)+eps))
+    return ret
+
+# a simple hfe()
+# hfe = lambda x,y,eps=1e-3: np.max(np.abs(x-y)/(np.abs(x)+np.abs(y)+eps))
