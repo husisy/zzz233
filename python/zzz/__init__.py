@@ -2,6 +2,7 @@ import os
 import pickle
 import urllib.request
 import urllib.error
+import numpy as np
 
 def check_internet_available(timeout=1):
     host = 'https://www.google.com' #dnsloopup google.com #172.217.161.142 (20190817)
