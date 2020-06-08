@@ -14,6 +14,7 @@ def check_internet_available(timeout=1):
 
 
 def hfp(**kwargs):
+    # TODO fail on winOS
     z0 = globals()
     for k,v in kwargs.items():
         if k in z0:
@@ -48,7 +49,7 @@ def to_np(x):
     elif tmp0.startswith('cupy'):
         ret = x.get()
     else:
-        ret = x
+        ret = np.asarray(x)
     return ret
 
 def hfe(x, y, eps=1e-5):
@@ -59,3 +60,10 @@ def hfe(x, y, eps=1e-5):
 
 # a simple hfe()
 # hfe = lambda x,y,eps=1e-3: np.max(np.abs(x-y)/(np.abs(x)+np.abs(y)+eps))
+
+
+def moving_average(np0, num=3):
+    # see https://stackoverflow.com/q/13728392/7290857
+    kernel = np.ones(num) / num
+    ret = np.convolve(np.asarray(np0), kernel, mode='same')
+    return ret
