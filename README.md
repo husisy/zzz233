@@ -9,9 +9,23 @@
 
 ## quickstart
 
-1. install `pip install .`
-2. uninstall `pip uninstall zzz`
-3. use `from zzz import xxx`
+install
+
+```bash
+pip install git+https://github.com/husisy/zzz.git
+```
+
+uninstall
+
+```bash
+pip uninstall zzz
+```
+
+usage
+
+```Python
+from zzz import xxx
+```
 
 ## 说明
 
