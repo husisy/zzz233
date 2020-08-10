@@ -32,5 +32,16 @@ from_pickle('a')
 from_pickle('b')
 ```
 
-`python -c "import zzz; zzz.known_hosts()"`：查询所有`known_hosts`
-`python -c "import zzz; zzz.known_hosts('[123.45.67.89]:2022')"`：从`known_hosts`中删去`[123.45.67.89]:2022`
+`known_hosts()`
+
+查询所有`known_hosts`
+
+```bash
+python -c "import zzz; zzz.known_hosts()"
+```
+
+从`known_hosts`中删去`[123.45.67.89]:2022`
+
+```bash
+python -c "import zzz; zzz.known_hosts('[123.45.67.89]:2022')"
+```
