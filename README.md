@@ -27,8 +27,10 @@
 from zzz import to_pickle, from_pickle
 a = 233
 b = 0.233
-to_pickle(a=a)
-to_pickle(b=b)
+to_pickle(a=a, b=b)
 from_pickle('a')
 from_pickle('b')
 ```
+
+`python -c "import zzz; zzz.known_hosts()"`：查询所有`known_hosts`
+`python -c "import zzz; zzz.known_hosts('[123.45.67.89]:2022')"`：从`known_hosts`中删去`[123.45.67.89]:2022`
