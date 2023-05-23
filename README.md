@@ -1,61 +1,58 @@
-# zzz
+# zzz233
 
-个人在`python`交互式环境下常用的一些函数
+A minimal python package.
 
-用途
+1. download locally
+   * clone repository: `git clone xxx`
+   * download zip: `wget xxx`
+   * download released package: TODO
+2. install
+   * install locally: `pip install .`
+   * (for developer) install locally: `pip install -e ".[dev]"`
+   * install from github: `pip install git+https://github.com/husisy/zzz233.git`
+   * TODO pypi
+3. uninstall `pip uninstall zzz233`
+4. scrips
+   * run in command line: `zzz233`
+5. unittest: download locally
+   * `pytest`
+   * (require developer install locally) coverage `pytest --cov=python/zzz233`
+6. documentation
+   * build locally: `mkdocs serve`
+   * website: `https://husisy.github.io/zzz233/`
+7. github action (CI/CD)
+   * build documentation
+   * unittest
+8. reading material
+   * [github/setuptools_scm](https://github.com/pypa/setuptools_scm) (Source Code Management)
+   * [setuptools/pyproject-config](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
+   * distribute package to pypi
 
-1. 于个人，使这些函数可以通过`from zzz import xxx`来使用，但这些函数应该不会在个人的任何公开代码中使用
-2. 于他人，展示一个简单的python-package结构
-
-## quickstart
-
-install
-
-```bash
-pip install git+https://github.com/husisy/zzz.git
-```
-
-uninstall
-
-```bash
-pip uninstall zzz
-```
+TODO make a clear table
 
 usage
 
 ```Python
-from zzz import xxx
-```
-
-## 说明
-
-`check_internet_available()`: 测试网络是否可访问
-
-`hfp()`: 将函数变量送至交互式环境下；函数中的默认变量是这样的格式`(a=1,b=2,c=3)`，将每一个逗号改写成分号略繁琐，故替换为`hfp(a=1,b=2,c=3)`
-
-`to_pickle(**kwargs)`: 将变量用pickle保存至`tbd00.pkl`文件
-
-`from_pickle(key:str)`: 从`tbd00.pkl`文件读取`key`，使用示例见下
-
-```Python
-from zzz import to_pickle, from_pickle
+# a dummy example
+from zzz233 import from_pickle, to_pickle
 a = 233
-b = 0.233
-to_pickle(a=a, b=b)
-from_pickle('a')
-from_pickle('b')
+to_pickle(a=a)
+assert from_pickle('a')==a
 ```
 
-`known_hosts()`
+TODO
 
-查询所有`known_hosts`
+1. [ ] semantic versioning [link](https://semver.org/)
 
-```bash
-python -c "import zzz; zzz.known_hosts()"
-```
+## development
 
-从`known_hosts`中删去`[123.45.67.89]:2022`
+new environment
 
 ```bash
-python -c "import zzz; zzz.known_hosts('[123.45.67.89]:2022')"
+micromamba create -n zzz233 python
+micromamba activate zzz233
+
+pip install .
+# pip install -e ".[dev]"
+mkdocs serve
 ```
