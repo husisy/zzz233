@@ -21,6 +21,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
+    "twine",
     "pytest",
     "pytest-cov",
     "mkdocs",
