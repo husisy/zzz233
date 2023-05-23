@@ -3,15 +3,15 @@
 A minimal python package.
 
 1. download locally
-   * clone repository: `git clone xxx`
+   * clone repository: `git clone git@github.com:husisy/zzz233.git`
    * download zip: `wget xxx`
    * download released package: TODO
 2. install
+   * install from pypi: `pip install zzz233`
    * install locally: `pip install .`
    * (for developer) install locally: `pip install ".[dev]"`
    * (for documentation developer) install locally: `pip install ".[doc]"`
    * install from github: `pip install git+https://github.com/husisy/zzz233.git`
-   * TODO pypi
 3. uninstall `pip uninstall zzz233`
 4. scrips
    * run in command line: `zzz233`
