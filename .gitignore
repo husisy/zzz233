@@ -3,6 +3,7 @@ __pycache__/
 build/
 dist/
 .env
+site/
 
 # setuptools-scm
 python/*/_version.py

@@ -8,7 +8,8 @@ A minimal python package.
    * download released package: TODO
 2. install
    * install locally: `pip install .`
-   * (for developer) install locally: `pip install -e ".[dev]"`
+   * (for developer) install locally: `pip install ".[dev]"`
+   * (for documentation developer) install locally: `pip install ".[doc]"`
    * install from github: `pip install git+https://github.com/husisy/zzz233.git`
    * TODO pypi
 3. uninstall `pip uninstall zzz233`
@@ -21,7 +22,7 @@ A minimal python package.
    * build locally: `mkdocs serve`
    * website: `https://husisy.github.io/zzz233/`
 7. github action (CI/CD)
-   * build documentation
+   * build documentation, enable github page (select deploy from actions)
    * unittest
 8. reading material
    * [github/setuptools_scm](https://github.com/pypa/setuptools_scm) (Source Code Management)
@@ -71,7 +72,7 @@ python -m build
 twine upload --repository testpypi dist/*
 # --repository-url https://test.pypi.org/legacy/
 pip uninstall zzz233
-pip install -i https://test.pypi.org/simple/ zzz233
+pip install --upgrade -i https://test.pypi.org/simple/ zzz233
 
 # pypi
 # --repository-url https://upload.pypi.org/legacy/
