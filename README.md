@@ -56,3 +56,23 @@ pip install .
 # pip install -e ".[dev]"
 mkdocs serve
 ```
+
+publish to pypi
+
+```bash
+# cleanup the branch and tag the latest commit with a valid version
+# otherwise the build will fail
+rm -rf ./dist
+pip install build
+python -m build
+
+# testpypi
+# setup testpypi apikey $HOME/.pypirc (the username is "__token__")
+twine upload --repository testpypi dist/*
+# --repository-url https://test.pypi.org/legacy/
+pip uninstall zzz233
+pip install -i https://test.pypi.org/simple/ zzz233
+
+# pypi
+# --repository-url https://upload.pypi.org/legacy/
+```
