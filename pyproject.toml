@@ -24,6 +24,8 @@ dev = [
     "twine",
     "pytest",
     "pytest-cov",
+]
+doc = [
     "mkdocs",
     "mkdocs-material",
     "pymdown-extensions",
