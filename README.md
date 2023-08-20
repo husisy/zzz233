@@ -1,4 +1,6 @@
 # zzz233
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233?ref=badge_shield)
+
 
 A minimal python package.
 
@@ -77,3 +79,7 @@ pip install --upgrade -i https://test.pypi.org/simple/ zzz233
 # pypi
 # --repository-url https://upload.pypi.org/legacy/
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233?ref=badge_large)
