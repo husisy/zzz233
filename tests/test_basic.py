@@ -13,3 +13,7 @@ def test_to_pickle_from_pickle():
 def test_version():
     assert hasattr(zzz233, '__version__')
     assert hasattr(zzz233, '__version_tuple__')
+
+
+def test_load_package_data():
+    assert zzz233.load_package_data()=='this is the test data'

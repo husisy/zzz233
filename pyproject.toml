@@ -44,3 +44,6 @@ where = ["python"]
 
 [tool.setuptools_scm]
 write_to = "python/zzz233/_version.py"
+
+[tool.setuptools.package-data]
+zzz233 = ["data/*.txt"]

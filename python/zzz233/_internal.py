@@ -121,3 +121,14 @@ def script_print_lucky():
         ret (NoneType): None
     '''
     print('[zzz233] I am feelly lucky today!')
+
+
+def load_package_data(file='data00.txt'):
+    path = os.path.join(os.path.dirname(__file__), 'data', file)
+    if os.path.exists(path):
+        with open(path, 'r') as fid:
+            ret = fid.read().strip()
+    else:
+        print(f'package data file "{file}" not exist')
+        ret = None
+    return ret
