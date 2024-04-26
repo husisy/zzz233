@@ -1,4 +1,5 @@
 import os
+import random
 import pickle
 import urllib.request
 import urllib.error
@@ -132,3 +133,17 @@ def load_package_data(file='data00.txt'):
         print(f'package data file "{file}" not exist')
         ret = None
     return ret
+
+def next_tbd_dir(dir0='tbd00', maximum_int=100000, tag_create:bool=True):
+    if not os.path.exists(dir0):
+        os.makedirs(dir0)
+    tmp1 = [x for x in os.listdir(dir0) if x[:3]=='tbd']
+    exist_set = {x[3:] for x in tmp1}
+    while True:
+        tmp1 = str(random.randint(1,maximum_int))
+        if tmp1 not in exist_set:
+            break
+    tbd_dir = os.path.join(dir0, 'tbd'+tmp1)
+    if tag_create:
+        os.mkdir(tbd_dir)
+    return tbd_dir
