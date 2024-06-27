@@ -82,6 +82,12 @@ pip install --upgrade -i https://test.pypi.org/simple/ zzz233
 # --repository-url https://upload.pypi.org/legacy/
 ```
 
+## Acknowledgements
+
+This project uses the following third-party libraries:
+
+* **h5py**: A Python interface to the HDF5 binary data format. Licensed under the BSD-3-Clause License. [h5py-License](https://github.com/h5py/h5py/blob/master/LICENSE)
+
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233?ref=badge_large)
