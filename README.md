@@ -1,6 +1,8 @@
 # zzz233
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233?ref=badge_shield)
 
+**WARNING**: this package is only to demonstrate how to build a minimal python package. Any functions provided in this package could be changed in an incompatible way in the future. DO NOT use it in production.
 
 A minimal python package.
 
@@ -80,6 +82,6 @@ pip install --upgrade -i https://test.pypi.org/simple/ zzz233
 # --repository-url https://upload.pypi.org/legacy/
 ```
 
-
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhusisy%2Fzzz233?ref=badge_large)

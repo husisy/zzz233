@@ -16,6 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
+    "h5py",
 ]
 dynamic = ["version"]
 

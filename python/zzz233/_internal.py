@@ -1,41 +1,108 @@
 import os
 import random
 import pickle
+import h5py
 import urllib.request
 import urllib.error
 import numpy as np
 
-def to_pickle(**kwargs):
-    '''save kwargs to tbd00.pkl
+
+def to_pickle_wrapper(fname:str='tbd00.pkl'):
+    '''wrapper for to_pickle
 
     Parameters:
-        kwargs (dict): key-value pairs to be saved
+        fname (str): pickle file name
 
     Returns:
-        ret (NoneType): None
+        to_pickle (function): function to save key-value pairs to pickle file
     '''
-    if os.path.exists('tbd00.pkl'):
-        with open('tbd00.pkl', 'rb') as fid:
-            z0 = pickle.load(fid)
-        z0.update(**kwargs)
-    else:
-        z0 = kwargs
-    with open('tbd00.pkl', 'wb') as fid:
-        pickle.dump(z0, fid)
+    def to_pickle(**kwargs):
+        '''save kwargs to pickle file
+
+        Parameters:
+            kwargs (dict): key-value pairs to be saved, key must be string
+
+        Returns:
+            ret (NoneType): None
+        '''
+        assert all(isinstance(k,str) for k in kwargs.keys()), 'keys must be strings'
+        if os.path.exists(fname):
+            with open(fname, 'rb') as fid:
+                z0 = pickle.load(fid)
+            z0.update(**kwargs)
+        else:
+            z0 = kwargs
+        with open(fname, 'wb') as fid:
+            pickle.dump(z0, fid)
+    return to_pickle
 
 
-def from_pickle(key):
-    '''load value from tbd00.pkl
+def from_pickle_wrapper(fname:str='tbd00.pkl'):
+    '''wrapper for from_pickle
 
     Parameters:
-        key (str): key to be loaded
+        fname (str): pickle file name
 
     Returns:
-        ret (any): value corresponding to key
+        from_pickle (function): function to load value from pickle file
     '''
-    with open('tbd00.pkl', 'rb') as fid:
-        return pickle.load(fid)[key]
+    def from_pickle(key:str|None=None):
+        '''load value from pickle file
 
+        Parameters:
+            key (str): key to be loaded
+
+        Returns:
+            ret (any): value corresponding to key
+        '''
+        assert os.path.exists(fname), f'file "{fname}" not exist'
+        with open(fname, 'rb') as fid:
+            tmp0 = pickle.load(fid)
+            ret = list(tmp0.keys()) if key is None else tmp0[key]
+        return ret
+    return from_pickle
+
+to_pickle = to_pickle_wrapper()
+from_pickle = from_pickle_wrapper()
+
+
+def to_hdf5_wrapper(fname:str='tbd00.hdf5'):
+    def to_hdf5(**kwargs):
+        '''save kwargs to hdf5 file (mainly for share data between python and other languages)
+
+        Parameters:
+            kwargs (dict): key-value pairs to be saved, key must be string
+
+        Returns:
+            ret (NoneType): None
+        '''
+        assert all(isinstance(k,str) for k in kwargs.keys()), 'keys must be strings'
+        with h5py.File(fname, 'a', libver='latest') as fid:
+            for key,value in kwargs.items():
+                if key in fid.keys():
+                    del fid[key]
+                fid.create_dataset(key, data=value)
+    return to_hdf5
+
+
+def from_hdf5_wrapper(fname:str='tbd00.hdf5'):
+    def from_hdf5(key:str|None=None):
+        '''load value from hdf5 file
+
+        Parameters:
+            key (str,None): key to be loaded, if None, return all keys
+
+        Returns:
+            ret (any): value corresponding to key
+        '''
+        assert os.path.exists(fname), f'file "{fname}" not exist'
+        with h5py.File(fname, 'r') as fid:
+            ret = list(fid.keys()) if key is None else fid[key][()]
+        return ret
+    return from_hdf5
+
+to_hdf5 = to_hdf5_wrapper()
+from_hdf5 = from_hdf5_wrapper()
 
 def to_np(x):
     '''convert tensorflow/torch/cupy array to numpy array
