@@ -29,3 +29,15 @@ def test_version():
 
 def test_load_package_data():
     assert zzz233.load_package_data()=='this is the test data'
+
+
+def test_rand_str_custom_key():
+    result = zzz233.rand_str(key='Aa')
+    assert 8 <= len(result) <= 12
+    assert all(c.isupper() or c.islower() for c in result)
+    assert not any(c.isdigit() for c in result)
+    assert not any(c in '!#$%@+-~' for c in result)
+
+def test_rand_str_length():
+    result = zzz233.rand_str(len_=(5, 5))
+    assert len(result) == 5

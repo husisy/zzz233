@@ -1,6 +1,7 @@
 import os
 import random
 import pickle
+import string
 import h5py
 import urllib.request
 import urllib.error
@@ -214,3 +215,33 @@ def next_tbd_dir(dir0='tbd00', maximum_int=100000, tag_create:bool=True):
     if tag_create:
         os.mkdir(tbd_dir)
     return tbd_dir
+
+def rand_str(key:str='Aa1!', len_:tuple[int,int]=(8,12)):
+    '''generate random string
+
+    Parameters:
+        key (str): characters to include in the random string.
+                   'A' for uppercase, 'a' for lowercase, '1' for digits, '!' for special characters.
+        len_ (tuple): range of the length of the generated string.
+
+    Returns:
+        ret (str): generated random string
+    '''
+    a,b = len_
+    assert (0<a) and (a<=b)
+    len_ = random.randint(a, b)
+    key = ''.join(set(key))
+    assert set(key)<=set('Aa1!'), 'key must be subset of "Aa1!"'
+    assert len(key)>0
+    choice = ''
+    if 'A' in key:
+        choice += string.ascii_uppercase
+    if 'a' in key:
+        choice += string.ascii_lowercase
+    if '1' in key:
+        choice += string.digits
+    if '!' in key:
+        choice += '!#$%@+-~'# part of string.punctuation
+    ret = ''.join(random.choices(choice, k=len_))
+    return ret
+
