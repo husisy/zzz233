@@ -67,6 +67,12 @@ to_pickle = to_pickle_wrapper()
 from_pickle = from_pickle_wrapper()
 
 
+def pickle_wrapper(fname:str='tbd00.pkl'):
+    to_pickle = to_pickle_wrapper(fname)
+    from_pickle = from_pickle_wrapper(fname)
+    return to_pickle, from_pickle
+
+
 def to_hdf5_wrapper(fname:str='tbd00.hdf5'):
     def to_hdf5(**kwargs):
         '''save kwargs to hdf5 file (mainly for share data between python and other languages)
